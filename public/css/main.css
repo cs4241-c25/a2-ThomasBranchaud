@@ -2,3 +2,64 @@ body {
     background:black;
     color:white;
 }
+
+#nav {
+    list-style: none;
+    padding: 0;
+}
+
+#nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+#nav li h1{
+    display: inline;
+    margin-right: 20px;
+}
+
+#nav a:visited{
+    color: bisque;
+}
+
+#nav a:hover{
+    color: lightgrey;
+}
+
+#nav a:link{
+    color: bisque;
+}
+
+body {
+    font-family: "Smooch Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+button{
+    font-family: "Smooch Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin-left: 100px;
+}
+
+td {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    padding: 15px;
+}
+
+th{
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    padding: 15px;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}

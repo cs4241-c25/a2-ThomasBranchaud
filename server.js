@@ -9,9 +9,9 @@ const http = require( "node:http" ),
     port = 3000
 
 const appdata = [
-    { "model": "toyota", "year": 1999, "mpg": 23 },
-    { "model": "honda", "year": 2004, "mpg": 30 },
-    { "model": "ford", "year": 1987, "mpg": 14}
+    { "title": "Apex Legends", "genre": "First Person Shooter", "online": true },
+    { "title": "Marvel Rivals", "genre": "Third Person Shooter", "online": true },
+    { "title": "Hollow Knight", "genre": "2D Platformer", "online": false}
 ]
 
 // let fullURL = ""
@@ -29,10 +29,30 @@ const server = http.createServer( function( request,response ) {
 
 const handleGet = function( request, response ) {
     const filename = dir + request.url.slice( 1 )
+    console.log(request.url)
 
-    if( request.url === "/" ) {
-        sendFile( response, "public/index.html" )
-    }else{
+    if( request.url === "/" || request.url === "/a2-ThomasBranchaud/public/index.html") {
+        sendFile( response, "./public/index.html" )
+    }
+    else if (request.url === "/results"){
+        response.end(JSON.stringify(appdata))
+    }
+    else if (request.url === "/a2-ThomasBranchaud/public/results.html"){
+        sendFile(response, "./public/results.html")
+    }
+    else if (request.url === "/a2-ThomasBranchaud/public/css/main.css"){
+        sendFile(response, "./public/css/main.css")
+    }
+    else if (request.url === "/a2-ThomasBranchaud/public/js/results.js"){
+        sendFile(response, "./public/js/results.js")
+    }
+    else if (request.url.includes("/index.html")){
+        sendFile( response, "./public/index.html" )
+    }
+    else if (request.url === "/a2-ThomasBranchaud/public/js/main.js"){
+        sendFile(response, "./public/js/main.js")
+    }
+    else{
         sendFile( response, filename )
     }
 }
@@ -45,7 +65,8 @@ const handlePost = function( request, response ) {
     })
 
     request.on( "end", function() {
-        console.log( JSON.parse( dataString ) )
+        console.log(dataString)
+        appdata.push(JSON.parse(dataString))
 
         // ... do something with the data here and at least generate the derived data
 

@@ -6,14 +6,41 @@
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/main.css">
 
-    <!-- get rid of favicon error -->
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
-<form>
-    <label for="yourname">Your Name: </label><input type="text" id="yourname" value="your name here">
-    <button>submit</button>
+<header id="nav">
+    <ul>
+        <li><h1>List of Games</h1></li>
+        <li><b><a href="index.html" class="nav">Home</a></b></li>
+        <li><b><a href="results.html" class="nav" id="result">Results</a></b></li>
+    </ul>
+</header>
+<form id="form">
+    <label for="title">Enter your favorite game</label>
+    <input id="title" type="text" value="Title">
+    <br/><br/>
+    <label for="genre">Enter the game's genre</label>
+    <input id="genre" type="text" value="Genre">
+    <br/><br/>
+    <label for="online">Is the game Online</label>
+    <select id="online" name="online">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br/><br/>
+    <button>Submit</button>
 </form>
+<br/><br/><hr><br/>
+<h3>----------------Current Games in the List----------------</h3>
+<table id="resultsTable">
+    <tr>
+        <th>Game Title</th>
+        <th>Game Genre</th>
+        <th>Is it an Online Game?</th>
+    </tr>
+    <tbody id="tableBody">
+    </tbody>
+</table>
 
 </body>
 </html>
