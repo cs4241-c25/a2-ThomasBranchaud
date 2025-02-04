@@ -9,9 +9,9 @@ const http = require( "node:http" ),
     port = 3000
 
 const appdata = [
-    { "title": "Apex Legends", "genre": "First Person Shooter", "online": true },
-    { "title": "Marvel Rivals", "genre": "Third Person Shooter", "online": true },
-    { "title": "Hollow Knight", "genre": "2D Platformer", "online": false}
+    { "title": "Apex Legends", "genre": "First Person Shooter", "online": true, "releaseYear": 2019, "age": 6},
+    { "title": "Marvel Rivals", "genre": "Third Person Shooter", "online": true, "releaseYear": 2024, "age": 1},
+    { "title": "Hollow Knight", "genre": "2D Platformer", "online": false, "releaseYear": 2017, "age": 8}
 ]
 
 // let fullURL = ""
@@ -52,6 +52,12 @@ const handleGet = function( request, response ) {
     else if (request.url === "/a2-ThomasBranchaud/public/js/main.js"){
         sendFile(response, "./public/js/main.js")
     }
+    else if(request.url === "/a2-ThomasBranchaud/public/delete.html"){
+        sendFile(response, "./public/delete.html")
+    }
+    else if(request.url === "/a2-ThomasBranchaud/public/js/delete.js"){
+        sendFile(response, "./public/js/delete.js")
+    }
     else{
         sendFile( response, filename )
     }
@@ -66,7 +72,37 @@ const handlePost = function( request, response ) {
 
     request.on( "end", function() {
         console.log(dataString)
-        appdata.push(JSON.parse(dataString))
+        const data = JSON.parse(dataString)
+        if (data.type === "delete"){
+            const index = appdata.findIndex(appdata => appdata.title === data.title)
+            appdata.splice(index, 1)
+        }
+        else if (data.type === "modify"){
+            console.log(data)
+            const gameToChange = appdata.find(appdata => appdata.title === data.title)
+            gameToChange.genre = data.genre
+            gameToChange.online = data.online
+            gameToChange.releaseYear = data.releaseYear
+            gameToChange.age = 2025 - data.releaseYear
+            if (gameToChange.age === 0){
+                gameToChange.age = 1
+            }
+        }
+        else if (data.type === "add"){
+            let age = 2025 - Number(data.releaseYear);
+            if (age === 0){
+                age = 1
+            }
+            const object = {
+                "title": data.title,
+                "genre": data.genre,
+                "online": data.online,
+                "releaseYear": Number(data.releaseYear),
+                "age": age
+            }
+            console.log(object)
+            appdata.push(object)
+        }
 
         // ... do something with the data here and at least generate the derived data
 

@@ -9,13 +9,16 @@ const submit = async function( event ) {
 
     const title = document.querySelector("#title").value;
     const genre = document.querySelector("#genre").value;
+    const year = document.querySelector("#year").value;
     let online;
     online = document.querySelector("#online").value === "true";
 
     const json = {
+        type: "add",
         title: title,
         genre: genre,
-        online: online
+        online: online,
+        releaseYear: year
     }
     console.log(json)
 
@@ -60,11 +63,17 @@ const updateData = async function(){
         } else {
             online.innerText = "No";
         }
+        const year = document.createElement("td")
+        year.innerText = games[i].releaseYear;
+        const age = document.createElement("td")
+        age.innerText = games[i].age;
 
         const tr = document.createElement("tr")
         tr.appendChild(title)
         tr.appendChild(genre)
         tr.appendChild(online)
+        tr.appendChild(year)
+        tr.appendChild(age)
         table.appendChild(tr)
     }
 }

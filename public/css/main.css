@@ -63,3 +63,22 @@ table, th, td {
     border: 1px solid white;
     border-collapse: collapse;
 }
+
+.buttons {
+    width: 50px;
+    margin: 0 auto;
+    display: inline;
+}
+
+.actionButton{
+    width:125px;
+    margin: 0 auto;
+    display: inline;
+}
+
+input {
+    margin-left: 10px;
+}
+select {
+    margin-left: 10px;
+}

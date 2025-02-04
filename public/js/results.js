@@ -21,11 +21,17 @@ window.onload = async function (event) {
         else {
             online.innerText = "No";
         }
+        const year = document.createElement("td")
+        year.innerText = games[i].releaseYear;
+        const age = document.createElement("td")
+        age.innerText = games[i].age;
 
         const tr = document.createElement("tr")
         tr.appendChild(title)
         tr.appendChild(genre)
         tr.appendChild(online)
+        tr.appendChild(year)
+        tr.appendChild(age)
         table.appendChild(tr)
     }
 }

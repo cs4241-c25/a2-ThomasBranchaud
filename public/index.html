@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/main.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 <header id="nav">
@@ -13,6 +15,7 @@
         <li><h1>List of Games</h1></li>
         <li><b><a href="index.html" class="nav">Home</a></b></li>
         <li><b><a href="results.html" class="nav" id="result">Results</a></b></li>
+        <li><b><a href="delete.html" class="nav" id="delete">Update/Delete an Entry</a></b></li>
     </ul>
 </header>
 <form id="form">
@@ -28,15 +31,20 @@
         <option value="false">No</option>
     </select>
     <br/><br/>
+    <label for="year">What year did the game release?</label>
+    <input id="year" type="number" value="Year">
+    <br/><br/>
     <button>Submit</button>
 </form>
 <br/><br/><hr><br/>
-<h3>----------------Current Games in the List----------------</h3>
+<h3>Current Games in the List</h3>
 <table id="resultsTable">
     <tr>
         <th>Game Title</th>
         <th>Game Genre</th>
         <th>Is it an Online Game?</th>
+        <th>Release Year</th>
+        <th>Game Age</th>
     </tr>
     <tbody id="tableBody">
     </tbody>
